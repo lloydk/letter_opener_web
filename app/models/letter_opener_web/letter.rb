@@ -1,7 +1,7 @@
 module LetterOpenerWeb
   class Letter
     cattr_accessor :letters_location do
-      Rails.root.join("tmp", "letter_opener")
+      ActionMailer::Base.send("#{ActionMailer::Base.delivery_method}_settings")[:location]
     end
 
     attr_reader :id, :sent_at
